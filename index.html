@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>joguinho tipo reverse</title>
+</head>
+<style>
+       .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            
+        }
+    .grid div {
+            width: calc(100% / 8);
+            height: calc(100% / 8);
+             border: 1px solid black; 
+            box-sizing: border-box;
+        }
+        .container {
+            position: relative;
+            width: 512px;
+            height: 512px;
+            top: 0;
+            left: 0;
+    
+        }
+        .botaogrind{
+            width: 100%;
+            height: 100%;
+            border: 1px solid black; 
+            /* background-color: transparent;
+            border-color: transparent; */
+        }
+        .my-div{
+            top: 0;
+            left: 0;
+            background-color: green;
+        }
+        #cenario {
+        /* background-color: green; */
+        width: 512px;
+        height: 512px;
+        position: relative;
+        /* background-image: url("assets/mapteste512.png"); */
+      }
+      #voltar{
+        
+        width: 88px;
+        height: 50px;
+        position: absolute;
+        top: 10px;
+        left: 524px;
+      }
+      #peçasplayer1show{
+        font-family: "Impact", fantasy;
+        width: 70px; height: 70px; text-align: center; font-size: 50px;
+	color: #050505;
+	background-color:rgba(0, 0, 0, 0);
+        position: absolute;
+        top: 107px;
+        left: 587px;
+      }
+      #peçasplayer2show{
+        font-family: "Impact", fantasy;
+        width: 70px; height: 70px; text-align: center; font-size: 50px;
+	color: #000000;
+	background-color:rgba(0, 0, 0, 0);
+        position: absolute;
+        top: 289px;
+        left: 587px;
+        
+      }
+      #descripl1{
+        font-family: "Impact", fantasy;
+        width: 200px; height: 90px; text-align: center; font-size: 28px;
+	color: #050505;
+	background-color:rgba(0, 0, 0, 0);
+        position: absolute;
+        top: 79px;
+        left: 524px;
+      }
+      #descripl2{
+        font-family: "Impact", fantasy;
+        width: 200px; height: 90px; text-align: center; font-size: 28px;
+	color: #000000;
+	background-color:rgba(0, 0, 0, 0);
+        position: absolute;
+        top: 261px;
+        left: 524px;
+        
+      }
+      .circulo {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid red;
+  background-color: blue;
+}
+</style>
+<body>
+    <div id="b2enario">
+    <div class="container"> 
+        <div class="grid">
+            <div class="my-div" id="t00"><button id="b00" onclick="escolherpeça(0,0)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t01" ><button id="b01" onclick="escolherpeça(0,1)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t02" ><button id="b02" onclick="escolherpeça(0,2)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t03" ><button id="b03" onclick="escolherpeça(0,3)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t04" ><button id="b04" onclick="escolherpeça(0,4)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t05" ><button id="b05" onclick="escolherpeça(0,5)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t06" ><button id="b06" onclick="escolherpeça(0,6)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t07" ><button id="b07" onclick="escolherpeça(0,7)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t10" ><button id="b10" onclick="escolherpeça(1,0)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t11" ><button id="b11" onclick="escolherpeça(1,1)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t12" ><button id="b12" onclick="escolherpeça(1,2)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t13" ><button id="b13" onclick="escolherpeça(1,3)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t14" ><button id="b14" onclick="escolherpeça(1,4)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t15" ><button id="b15" onclick="escolherpeça(1,5)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t16" ><button id="b16" onclick="escolherpeça(1,6)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t17" ><button id="b17" onclick="escolherpeça(1,7)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t20" ><button id="b20" onclick="escolherpeça(2,0)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t21" ><button id="b21" onclick="escolherpeça(2,1)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t22" ><button id="b22" onclick="escolherpeça(2,2)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t23" ><button id="b23" onclick="escolherpeça(2,3)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t24" ><button id="b24" onclick="escolherpeça(2,4)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t25" ><button id="b25" onclick="escolherpeça(2,5)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t26" ><button id="b26" onclick="escolherpeça(2,6)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t27" ><button id="b27" onclick="escolherpeça(2,7)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t30" ><button id="b30" onclick="escolherpeça(3,0)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t31" ><button id="b31" onclick="escolherpeça(3,1)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t32" ><button id="b32" onclick="escolherpeça(3,2)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t33" ><button id="b33" onclick="escolherpeça(3,3)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t34" ><button id="b34" onclick="escolherpeça(3,4)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t35" ><button id="b35" onclick="escolherpeça(3,5)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t36" ><button id="b36" onclick="escolherpeça(3,6)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t37" ><button id="b37" onclick="escolherpeça(3,7)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t40" ><button id="b40" onclick="escolherpeça(4,0)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t41" ><button id="b41" onclick="escolherpeça(4,1)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t42" ><button id="b42" onclick="escolherpeça(4,2)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t43" ><button id="b43" onclick="escolherpeça(4,3)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t44" ><button id="b44" onclick="escolherpeça(4,4)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t45" ><button id="b45" onclick="escolherpeça(4,5)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t46" ><button id="b46" onclick="escolherpeça(4,6)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t47" ><button id="b47" onclick="escolherpeça(4,7)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t50" ><button id="b50" onclick="escolherpeça(5,0)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t51" ><button id="b51" onclick="escolherpeça(5,1)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t52" ><button id="b52" onclick="escolherpeça(5,2)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t53" ><button id="b53" onclick="escolherpeça(5,3)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t54" ><button id="b54" onclick="escolherpeça(5,4)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t55" ><button id="b55" onclick="escolherpeça(5,5)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t56" ><button id="b56" onclick="escolherpeça(5,6)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t57" ><button id="b57" onclick="escolherpeça(5,7)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t60" ><button id="b60" onclick="escolherpeça(6,0)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t61" ><button id="b61" onclick="escolherpeça(6,1)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t62" ><button id="b62" onclick="escolherpeça(6,2)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t63" ><button id="b63" onclick="escolherpeça(6,3)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t64" ><button id="b64" onclick="escolherpeça(6,4)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t65" ><button id="b65" onclick="escolherpeça(6,5)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t66" ><button id="b66" onclick="escolherpeça(6,6)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t67" ><button id="b67" onclick="escolherpeça(6,7)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t70" ><button id="b70" onclick="escolherpeça(7,0)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t71" ><button id="b71" onclick="escolherpeça(7,1)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t72" ><button id="b72" onclick="escolherpeça(7,2)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t73" ><button id="b73" onclick="escolherpeça(7,3)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t74" ><button id="b74" onclick="escolherpeça(7,4)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t75" ><button id="b75" onclick="escolherpeça(7,5)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t76" ><button id="b76" onclick="escolherpeça(7,6)" class="botaogrind" style="visibility:hidden"></button></div>
+            <div class="my-div" id="t77" ><button id="b77" onclick="escolherpeça(7,7)" class="botaogrind" style="visibility:hidden"></button></div>
+
+        </div>
+    </div>
+</div>
+
+<button id="voltar" disabled onclick="voltar()"> VOLTAR </button>
+<div id="descripl1"> Peças do Player 1</div>
+<div id="peçasplayer1show"></div>
+<div id="descripl2"> Peças do Player 2</div>
+<div id="peçasplayer2show"></div>
+
+</body>
+<script>
+
+   let tabuleiro = [
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 1, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 2, 0],
+  [0, 2, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 1, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0]
+];
+
+var turno = 1;
+
+function turnos(){
+
+        if (turno > 2){
+            turno = 1;
+            return turnos();
+        }
+        document.getElementById('voltar').disabled = true;
+
+        if (turno == 1){
+            document.getElementById("descripl1").style.backgroundColor = 'red';
+            document.getElementById("descripl2").style.backgroundColor = 'transparent';
+            mostrarbotoes(1);
+            //alert("awe")
+        }
+        if (turno == 2){
+            document.getElementById("descripl2").style.backgroundColor = 'blue';
+            document.getElementById("descripl1").style.backgroundColor = 'transparent';
+            mostrarbotoes(2);
+            //alert("awe2")
+        }
+        mostrarPecas();
+    }
+
+ turnos();
+ 
+ function desabilitarBotoes() {
+  var botoes = document.querySelectorAll('.botaogrind');
+  for (var i = 0; i < botoes.length; i++) {
+    //botoes[i].disabled = true;
+    botoes[i].style.visibility = 'hidden';
+  }
+  //var botoes = document.querySelectorAll(".botaogrind");
+  for (let i = 0; i < botoes.length; i++) {
+    const idBotao = botoes[i].getAttribute("id");
+    const linha = parseInt(idBotao[1]);
+    const coluna = parseInt(idBotao[2]);
+    botoes[i].onclick = function() {
+      escolherpeça(linha, coluna);
+    };
+  }
+}
+
+function voltar(){
+    desabilitarBotoes();
+    turnos();
+}
+
+function multiplicarpeça(linha,coluna){
+    console.log(linha,coluna)
+    tabuleiro[linha][coluna] = turno;
+    if (linha+1 < tabuleiro.length && tabuleiro[linha+1][coluna] != turno && tabuleiro[linha+1][coluna] != 0 && tabuleiro[linha+1][coluna] != null){
+        tabuleiro[linha+1][coluna] = turno;
+    }
+    if (linha-1 >= 0 && tabuleiro[linha-1][coluna] != turno && tabuleiro[linha-1][coluna] != 0 && tabuleiro[linha-1][coluna] != null){
+        tabuleiro[linha-1][coluna] = turno;
+    }
+    if (coluna+1 < tabuleiro[0].length && tabuleiro[linha][coluna+1] != turno && tabuleiro[linha][coluna+1] != 0 && tabuleiro[linha][coluna+1] != null){
+        tabuleiro[linha][coluna+1] = turno;
+    }
+    if (coluna-1 >= 0 && tabuleiro[linha][coluna-1] != turno && tabuleiro[linha][coluna-1] != 0 && tabuleiro[linha][coluna-1] != null){
+        tabuleiro[linha][coluna-1] = turno;
+    }
+    desabilitarBotoes();
+    turno++;
+    return turnos();
+}
+
+function pularpeças(linha,coluna,Alinha, Acoluna){
+    console.log(linha,coluna)
+    tabuleiro[Alinha][Acoluna] = 0;
+    tabuleiro[linha][coluna] = turno;
+    if (linha+1 < tabuleiro.length && tabuleiro[linha+1][coluna] != turno && tabuleiro[linha+1][coluna] != 0 && tabuleiro[linha+1][coluna] != null){
+        tabuleiro[linha+1][coluna] = turno;
+    }
+    if (linha-1 >= 0 && tabuleiro[linha-1][coluna] != turno && tabuleiro[linha-1][coluna] != 0 && tabuleiro[linha-1][coluna] != null){
+        tabuleiro[linha-1][coluna] = turno;
+    }
+    if (coluna+1 < tabuleiro[0].length && tabuleiro[linha][coluna+1] != turno && tabuleiro[linha][coluna+1] != 0 && tabuleiro[linha][coluna+1] != null){
+        tabuleiro[linha][coluna+1] = turno;
+    }
+    if (coluna-1 >= 0 && tabuleiro[linha][coluna-1] != turno && tabuleiro[linha][coluna-1] != 0 && tabuleiro[linha][coluna-1] != null){
+        tabuleiro[linha][coluna-1] = turno;
+    }
+    desabilitarBotoes();
+    turno++;
+    return turnos();
+}
+
+function escolherpeça(linha, coluna) {
+  desabilitarBotoes();
+  document.getElementById('voltar').disabled = false;
+
+  if (linha-1 >= 0 && linha-1 <= 7 && tabuleiro[linha - 1][coluna] == 0 && tabuleiro[linha - 1][coluna] != null) {
+    document.getElementById('b' + (linha-1) + coluna).style.visibility = 'visible';
+    document.getElementById('b' + (linha-1) + coluna).onclick = function() {
+      multiplicarpeça(linha-1, coluna);
+    };
+  }
+
+  if (linha+1 >= 0 && linha+1 <=7 && tabuleiro[linha + 1][coluna] == 0 && tabuleiro[linha + 1][coluna] != null) {
+    document.getElementById('b' + (linha+1) + coluna).style.visibility = 'visible';
+    document.getElementById('b' + (linha+1) + coluna).onclick = function() {
+      multiplicarpeça(linha+1, coluna);
+    };
+  }
+
+  if (coluna-1 >= 0 && coluna-1 <= 7 && tabuleiro[linha][coluna -1] == 0 && tabuleiro[linha][coluna-1] != null) {
+    document.getElementById('b' + linha+ (coluna-1)).style.visibility = 'visible';
+    document.getElementById('b' + linha + (coluna-1)).onclick = function() {
+      multiplicarpeça(linha, coluna-1);
+    };
+  }
+  if (coluna+1 >= 0 && coluna+1 <= 7 && tabuleiro[linha][coluna +1] == 0 && tabuleiro[linha][coluna+1] != null) {
+    document.getElementById('b' + linha+ (coluna+1)).style.visibility = 'visible';
+    document.getElementById('b' + linha + (coluna+1)).onclick = function() {
+      multiplicarpeça(linha, coluna+1);
+    };
+  }
+
+  if (linha+2 >= 0 && linha+2 <=7 && tabuleiro[linha + 2][coluna] == 0 && tabuleiro[linha + 2][coluna] != null) {
+    document.getElementById('b' + (linha+2) + coluna).style.visibility = 'visible';
+    document.getElementById('b' + (linha+2) + coluna).onclick = function() {
+      pularpeças(linha+2, coluna,linha, coluna);
+    };
+  }
+
+  if (linha-2 >= 0 && linha-2 <=7 && tabuleiro[linha - 2][coluna] == 0 && tabuleiro[linha - 2][coluna] != null) {
+    document.getElementById('b' + (linha-2) + coluna).style.visibility = 'visible';
+    document.getElementById('b' + (linha-2) + coluna).onclick = function() {
+      pularpeças(linha-2, coluna,linha, coluna);
+    };
+  }
+  if (coluna-2 >= 0 && coluna-2 <=7 && tabuleiro[linha][coluna - 2] == 0 && tabuleiro[linha][coluna - 2] != null) {
+    document.getElementById('b' + linha + (coluna-2)).style.visibility = 'visible';
+    document.getElementById('b' + linha + (coluna-2)).onclick = function() {
+      pularpeças(linha, coluna-2,linha, coluna);
+    };
+  }
+  if (coluna+2 >= 0 && coluna+2 <=7 && tabuleiro[linha][coluna + 2] == 0 && tabuleiro[linha][coluna + 2] != null) {
+    document.getElementById('b' + linha + (coluna+2)).style.visibility = 'visible';
+    document.getElementById('b' + linha + (coluna+2)).onclick = function() {
+      pularpeças(linha, coluna+2,linha, coluna);
+    };
+  }
+}
+
+function mostrarbotoes(player) {
+  for (let i = 0; i < tabuleiro.length; i++) {
+    for (let j = 0; j < tabuleiro[i].length; j++) {
+      if (tabuleiro[i][j] === player) {
+        if ((i + 1 < tabuleiro.length && tabuleiro[i + 1][j] === 0) ||
+            (i - 1 >= 0 && tabuleiro[i - 1][j] === 0) ||
+            (j + 1 < tabuleiro[i].length && tabuleiro[i][j + 1] === 0) ||
+            (j - 1 >= 0 && tabuleiro[i][j - 1] === 0)) {
+          let button = document.getElementById('b' + i + j);
+          button.style.visibility = 'visible';
+        }
+        if ((i + 2 < tabuleiro.length && tabuleiro[i + 2][j] === 0) ||
+            (i - 2 >= 0 && tabuleiro[i - 2][j] === 0) ||
+            (j + 2 < tabuleiro[i].length && tabuleiro[i][j + 2] === 0) ||
+            (j - 2 >= 0 && tabuleiro[i][j - 2] === 0)) {
+          let button = document.getElementById('b' + i + j);
+          button.style.visibility = 'visible';
+        }
+      }
+    }
+  }
+}
+
+ var peçasplayer1 = 2
+    peçasplayer1show = document.getElementById('peçasplayer1show');
+    peçasplayer1show.innerHTML =  peçasplayer1
+ var peçasplayer2 = 2
+    peçasplayer2show = document.getElementById('peçasplayer2show');
+    peçasplayer2show.innerHTML =  peçasplayer2
+
+function mostrarPecas() {
+ let quantidadeDePeçasPL1=0;
+  let quantidadeDePeçasPL2=0;
+  for (let i = 0; i < tabuleiro.length; i++) {
+    for (let j = 0; j < tabuleiro[i].length; j++) {
+      if (tabuleiro[i][j] === 1) {
+        let button1 = document.getElementById('t' + i + j);
+        let button1a = document.getElementById('b' + i + j);
+        button1a.style.backgroundColor = 'red';
+        button1.style.visibility = 'visible';
+        button1.style.backgroundColor = 'red';
+        document.getElementById('t' + i + j).classList.add("circulo");
+        quantidadeDePeçasPL1++;
+      }
+      if (tabuleiro[i][j] === 2) {
+        let button2 = document.getElementById('t' + i + j);
+        let button2a = document.getElementById('b' + i + j);
+        button2a.style.backgroundColor = 'blue';
+        button2.style.visibility = 'visible';
+        button2.style.backgroundColor = 'blue';
+        document.getElementById('t' + i + j).classList.add("circulo");
+        quantidadeDePeçasPL2++;
+      }
+      if (tabuleiro[i][j] === 0) {
+       let button2 = document.getElementById('t' + i + j);
+       let button2a = document.getElementById('b' + i + j);
+        //button2.style.visibility = 'visible';
+        button2.style.backgroundColor = 'green';
+        button2a.style.backgroundColor = 'white';
+        document.getElementById('t' + i + j).classList.remove("circulo");
+        
+      }
+    }
+  }
+ 
+    peçasplayer1 = quantidadeDePeçasPL1;
+    peçasplayer2 = quantidadeDePeçasPL2;
+    peçasplayer1show = document.getElementById('peçasplayer1show'); 
+    peçasplayer1show.innerHTML = peçasplayer1;
+    peçasplayer2show = document.getElementById('peçasplayer2show'); 
+    peçasplayer2show.innerHTML = peçasplayer2;
+    quantidadeDePeçasPL2 = 0;
+    quantidadeDePeçasPL1 = 0;
+}
+</script>
+</html>
